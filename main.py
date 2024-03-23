@@ -30,17 +30,25 @@ print(int(my_num))
 x = 133 % 100
 print(x)
 
-y = ""
-print(type(y))
+# y = ""
+# print(type(y))
 
-l_1 = [1, 23, 54]
+# l_1 = [1, 23, 54]
 
-l_2 = ["a", "d"]
+# l_2 = ["a", "d"]
 
-print(l_1 + l_2)
+# print(l_1 + l_2)
 
-print(l_1.pop())
+# print(l_1.pop())
 
-tp = (1, 2, 3)
-tp[1] = 3
-print(tp)
+# tp = (1, 2, 3)
+# tp[1] = 3
+# print(tp)
+
+
+my_dict = {
+    "a": "A"
+}
+
+del my_dict["a"]
+print(my_dict)
