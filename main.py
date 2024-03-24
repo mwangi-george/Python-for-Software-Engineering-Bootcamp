@@ -52,3 +52,8 @@ my_dict = {
 
 del my_dict["a"]
 print(my_dict)
+
+
+my_dict["nested_dict"] = {1: "a", 2: "b"}
+
+print(my_dict)
