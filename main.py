@@ -85,7 +85,7 @@ print(f"name: {name}, age: {age:.2f}, Lives in {zip_code:05d}")
 # TODO: Things are the things I should focus on
 
 name = "Marcus"
-age = 65
+age = 56
 
 """
 The pass statement is used as a placeholder for future code. 
@@ -116,3 +116,53 @@ if is_over_18 == True:
 # using 'is' operator
 if is_over_18 is True:
     print(f"{name} is over 18 years")
+
+# using the variable itself
+if is_over_18:
+    print(f"{name} is over 18 years and getting old really fast")
+
+random_none = None
+if random_none is None:
+    print("We have a none")
+
+if age is not None:
+    print("Age is not None")
+
+age = 12
+is_over_18 = age > 18
+# negating
+if not is_over_18:
+    print("We are under 18")
+
+"""
+The default falsy value for numerical data types is 0
+"""
+
+random_value = 2
+if random_value:  # truthy except for 0
+    print(f"{random_value} is not zero")
+else:
+    print("This is zero")
+
+"""
+For tuples, lists, and dictionaries the default falsy value is when they are empty
+"""
+
+random_list = []
+if random_list:
+    print("The list is not empty")
+else:
+    print("The list is empty")
+
+
+random_tuple = ()
+if random_tuple:
+    print("The tuple is not empty")
+else:
+    print("The tuple is empty")
+
+random_dict = {}
+if random_dict:
+    print("The dictionary is not empty")
+else:
+    print("The dictionary is empty")
