@@ -145,7 +145,7 @@ else:
     print("This is zero")
 
 """
-For tuples, lists, and dictionaries the default falsy value is when they are empty
+For tuples, lists, and dictionaries the default falsy value is when they are empty (their length is 0)
 """
 
 random_list = []
