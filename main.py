@@ -206,4 +206,5 @@ heights_cm = [156, 190, 201]
 
 # Iterate over the 3 objects
 for name, age, height in zip(names, ages, heights_cm):
+    print(name, age, height)
     print(f"{name} is {age} years old and {height}cm tall")
