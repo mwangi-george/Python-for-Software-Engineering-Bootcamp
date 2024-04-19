@@ -166,3 +166,43 @@ if random_dict:
     print("The dictionary is not empty")
 else:
     print("The dictionary is empty")
+
+
+# TODO:--- For Loops
+
+for i in range(0, 4):
+    print("Hello")
+    print(i)
+
+random_list = ["a", "b", "c", "d", "e"]
+for index in range(len(random_list)):
+    value = random_list[index]
+    print(index, value)
+
+
+print("List is now")
+print(random_list[index])
+
+second_list = ["x", "y", "z"]
+
+
+print("")
+for value in random_list:
+    print(value)
+    for second_value in second_list:
+        print(second_value)
+        total_value = value + second_value
+        print(total_value)
+
+# placeholder variables in the for loop
+for _ in range(5):  # _ is a placeholder since we are not using it anywhere inside the loop
+    print("Hi")
+
+
+# When two or more objects are connected we can use the zip method to iterate over them simultaneoulsy
+names = ["George", "Kevin", "Michael"]
+ages = [25, 23, 45]
+heights_cm = [156, 190, 201]
+
+for name, age, height in zip(names, ages, heights_cm):
+    print(f"{name} is {age} years old and {height}cm tall")
