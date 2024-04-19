@@ -208,3 +208,26 @@ heights_cm = [156, 190, 201]
 for name, age, height in zip(names, ages, heights_cm):
     print(name, age, height)
     print(f"{name} is {age} years old and {height}cm tall")
+
+
+# TODO:--- While loops
+# Means while a certain condition is TRUE
+my_age = 24
+
+while my_age > 25:
+    print(f"{my_age} is greater than 25")
+else:
+    print(f"{my_age} is less than 25")
+
+
+count = 0
+while count < 10:
+    print(count)
+    count += 1
+
+invest_amt = 50_000
+target = 500_000
+
+while invest_amt < target:
+    invest_amt += 50_000
+    print(f"Continue investing, you are now at {invest_amt}")
