@@ -83,3 +83,36 @@ zip_code = 1234
 print(f"name: {name}, age: {age:.2f}, Lives in {zip_code:05d}")
 
 # TODO: Things are the things I should focus on
+
+name = "Marcus"
+age = 65
+
+"""
+The pass statement is used as a placeholder for future code. 
+When the pass statement is executed, nothing happens, but you avoid getting an error when empty code is not allowed. 
+Empty code is not allowed in loops, function definitions, class definitions, or in if statements.
+"""
+if age <= 20:
+    print(f"{age} is less than or equal to 20")
+elif age <= 40:
+    pass
+elif age <= 60:
+    pass
+else:
+    print(f"{age} is great than 60")
+
+
+"""
+The 'is' operator in Python is used to check if two variables point to the same object. 
+Unlike the '==' operator, which checks if the values of two objects are equal, 
+the 'is' operator goes one step further to ensure that they are, in fact, the exact same object.
+"""
+is_over_18 = age > 18
+
+# using ==
+if is_over_18 == True:
+    print(f"{name} is over 18 years")
+
+# using 'is' operator
+if is_over_18 is True:
+    print(f"{name} is over 18 years")
