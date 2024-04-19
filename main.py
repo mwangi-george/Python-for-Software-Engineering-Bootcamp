@@ -69,3 +69,17 @@ print(my_dict)
 # if the value alrady exists, setdefault has no effect
 my_dict.setdefault("my_name", "GKM")
 print(my_dict)
+
+
+# ----------------Formatting strings
+print(f"my dictionary is {my_dict}")
+
+name = "Micah"
+age = 23.34533
+zip_code = 1234
+
+# format age to 2 decimal places
+# adding a defult number to zip code to make it 5 digits
+print(f"name: {name}, age: {age:.2f}, Lives in {zip_code:05d}")
+
+# TODO: Things are the things I should focus on
