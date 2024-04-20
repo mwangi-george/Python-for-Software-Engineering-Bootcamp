@@ -293,3 +293,21 @@ for x in fruits:
     if x == "banana":
         continue
     print(x)
+
+
+def print_if_odd(number):
+    if number % 2 == 0:
+        return  # similar to break
+    print(number)
+
+
+count = 0
+while True:
+    count += 1
+    print_if_odd(number=count)
+    if count >= 20:
+        break
+
+
+for i in range(20):
+    print_if_odd(i)
