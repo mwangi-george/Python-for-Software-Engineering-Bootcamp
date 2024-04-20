@@ -231,3 +231,33 @@ target = 500_000
 while invest_amt < target:
     invest_amt += 50_000
     print(f"Continue investing, you are now at {invest_amt}")
+
+
+count = 0
+while True:
+    count += 1
+    if count % 2 == 0:  # checking if even
+        continue  # skip even numbers and restart the loop at the next odd nummber
+    print(count)
+
+    # break the loop until when count is greater than 20
+    if count >= 20:
+        break
+
+# continue in for loop
+for i in range(20):
+    if i % 2 == 0:
+        continue
+    print(i)
+
+for i in range(5):
+    if i == 3:
+        continue
+    print(i)
+
+print("while loop started")
+x = 0
+while x < 4:
+    x += 1
+    print(x)
+    break  # break from the loop after adding 1
