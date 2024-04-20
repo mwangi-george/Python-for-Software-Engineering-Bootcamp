@@ -261,3 +261,27 @@ while x < 4:
     x += 1
     print(x)
     break  # break from the loop after adding 1
+
+
+invest_amt = 50_000
+while invest_amt <= 500_000:
+    invest_amt += 50_000
+
+    if invest_amt > 500_000:
+        break
+    print(invest_amt)
+
+
+val = 1
+while val <= 20:
+    print(val)
+    val += 2
+else:
+    print(f"{val} is no longer less than or equal to 20")
+
+val = 1
+while val <= 20:
+    print(val)
+    val += 3
+else:
+    print(f"{val} is now greater than 20")
