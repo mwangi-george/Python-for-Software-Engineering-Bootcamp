@@ -285,3 +285,11 @@ while val <= 20:
     val += 3
 else:
     print(f"{val} is now greater than 20")
+
+
+# if item is banana, skip to the next
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+    if x == "banana":
+        continue
+    print(x)
