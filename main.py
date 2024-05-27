@@ -416,3 +416,24 @@ def calculator(num_1, num_2, *args, **kwargs):
 
 
 print(calculator(2, 2, test_1=4, test_2=5))
+
+
+"""Global & Local Variables"""
+height_cm = 180  # this is a global variable (has larger scope)
+
+
+def name():
+    name = "George"  # this is a local variable
+    print(name)
+
+
+def height_m(x: float):
+    global height_cm  # access & manipulate global variables
+    height_cm = x
+    height_metres = height_cm / 100
+    return height_metres
+
+
+print("****************Global Variables**************")
+print(height_m(140))
+print(height_cm)
