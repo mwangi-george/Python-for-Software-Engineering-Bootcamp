@@ -384,3 +384,22 @@ print(my_numbers)
 
 # use single asteric to unpack a list when passing arguments
 print(calculator(*my_numbers))
+
+
+# unamed parameters in function definition
+def calculator(num1: int, num2: int, *args):
+    print(args)  # positional arguments
+    return num1 + num2, num1 - num2, num1 * num2, num1 / num2
+
+
+print(calculator(10, 5, 3, 4, 100, 200))
+
+
+# passing unknown keyword arguments
+def calculator(num1: int, num2: int, *args, **kwargs):
+    print(args)  # positional arguments
+    print(kwargs)
+    return num1 + num2, num1 - num2, num1 * num2, num1 / num2
+
+
+print(calculator(10, 5, 30, 45, me=20, mike=10))
