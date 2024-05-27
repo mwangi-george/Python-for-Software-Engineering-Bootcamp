@@ -288,33 +288,88 @@
 
 
 # if item is banana, skip to the next
-fruits = ["apple", "banana", "cherry"]
-for x in fruits:
-    if x == "banana":
-        continue
-    print(x)
+# fruits = ["apple", "banana", "cherry"]
+# for x in fruits:
+#     if x == "banana":
+#         continue
+#     print(x)
 
 
-def print_if_odd(number):
-    if number % 2 == 0:
-        return  # similar to break
-    print(number)
+# def print_if_odd(number):
+#     if number % 2 == 0:
+#         return  # similar to break
+#     print(number)
 
 
-count = 0
-while True:
-    count += 1
-    print_if_odd(number=count)
-    if count >= 20:
-        break
+# count = 0
+# while True:
+#     count += 1
+#     print_if_odd(number=count)
+#     if count >= 20:
+#         break
 
 
 # for i in range(20):
 #     print_if_odd(i)
 
-age = 0
-while True:
-    age += 1
-    if age >= 24:
-        break
-    print(age)
+# age = 0
+# while True:
+#     age += 1
+#     if age >= 24:
+#         break
+#     print(age)
+
+
+def add_numbers(number_1: int, number_2: int):
+    return number_1 + number_2, number_1 - number_2, number_1 * number_2
+
+
+added_num, subtracted_num, multiplied_num = add_numbers(2, 4)
+print(subtracted_num, multiplied_num)
+
+# assign the first value and discard the rest
+added_num, *_ = add_numbers(3, 5)
+print(added_num)
+
+
+# Write a program that prints out a left oriented triangle of x’s with a height of 5. Your final result
+# should look like this.
+# x
+# xx
+# xxx
+# xxxx
+# Xxxxx
+
+# def print_triangle(height):
+#     for i in range(1, height + 1):
+#         print('x' * i)
+
+
+# print_triangle(5)
+def print_centered_triangle(height):
+    for i in range(1, height + 1):
+        # Calculate the number of 'x's for the current row
+        num_xs = 2 * i - 1
+        # Calculate the number of spaces needed for centering
+        num_spaces = height - i
+        # Print the centered row
+        print(' ' * num_spaces + 'x' * num_xs)
+
+
+print_centered_triangle(5)
+
+
+"""using dictionary to provide input values"""
+
+# define function
+
+
+def calculator(num1: int, num2: int):
+    return num1 + num2, num1 - num2, num1 * num2, num1 / num2
+
+
+# store arguments in a dictionary, (keys must match function parameters)
+my_numbers = {"num1": 3, "num2": 2}
+
+# use double asteric to unpack the dictionary
+print(calculator(**my_numbers))
