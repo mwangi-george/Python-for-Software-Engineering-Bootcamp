@@ -373,3 +373,14 @@ my_numbers = {"num1": 3, "num2": 2}
 
 # use double asteric to unpack the dictionary
 print(calculator(**my_numbers))
+
+
+# unpacking a list
+first = 2
+second = 3
+
+my_numbers = [first, second]
+print(my_numbers)
+
+# use single asteric to unpack a list when passing arguments
+print(calculator(*my_numbers))
