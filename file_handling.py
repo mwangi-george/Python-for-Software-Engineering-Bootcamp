@@ -1,8 +1,12 @@
+# creating a directory
+import os
+os.mkdir("files")
+
 # opening a file
-file_text = open("test_file.txt", "w")
-file_csv = open("test_file.csv", "w")
-file_xls = open("test_file.xls", "w")
-file_tsv = open("test_file.tsv", "w")
+file_text = open("files/test_file.txt", "w")
+file_csv = open("files/test_file.csv", "w")
+file_xls = open("files/test_file.xls", "w")
+file_tsv = open("files/test_file.tsv", "w")
 
 
 file_text.write("this is our first line\n")
