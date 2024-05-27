@@ -398,8 +398,21 @@ print(calculator(10, 5, 3, 4, 100, 200))
 # passing unknown keyword arguments
 def calculator(num1: int, num2: int, *args, **kwargs):
     print(args)  # positional arguments
+    print(kwargs)  # returns a dictionary
+    print("Mike's Age: ", kwargs.get("mike"))
+    return num1 + num2, num1 - num2, num1 * num2, num1 / num2, args, kwargs
+
+
+print(calculator(10, 5, 30, 45, me=20, mike=10, moses="hello world"))
+
+
+def second(test_1, test_2):
+    print(test_1, test_2)
+
+
+def calculator(num_1, num_2, *args, **kwargs):
     print(kwargs)
-    return num1 + num2, num1 - num2, num1 * num2, num1 / num2
+    second(**kwargs)  # unpack additional keyword arguments
 
 
-print(calculator(10, 5, 30, 45, me=20, mike=10))
+print(calculator(2, 2, test_1=4, test_2=5))
