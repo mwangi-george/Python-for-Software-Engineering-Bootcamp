@@ -11,6 +11,24 @@ class Animal:
         return f"This animals height is {self.height}"
 
 
+class Person:
+
+    def __init__(self, name, language, nationality, profession) -> None:
+        self.name = name
+        self.language = language
+        self.nationality = nationality
+        self.profession = profession
+
+    def person_language(self):
+        return f"{self.name} speaks {self.language}"
+
+    def person_nationality(self):
+        return f"{self.name} comes from {self.nationality}"
+
+    def person_profession(self):
+        return f"{self.name}'s profession is {self.profession}"
+
+
 if __name__ == "__main__":
     # Initialize the class
     animal_1 = Animal(height=120, weight=20)
