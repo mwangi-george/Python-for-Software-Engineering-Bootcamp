@@ -12,5 +12,4 @@ def home():
 @app.get("/user")
 def user_info():
     user = Person("George", "English", "Kenya", "Software Engineer")
-    lang, *_, work = user.person_language(), user.person_nationality(), user.person_profession()
-    return lang, work
+    return user.person_language(), user.person_nationality(), user.person_profession()
