@@ -2,11 +2,16 @@ from fastapi import FastAPI
 from classes import Animal, Person
 app = FastAPI()
 
+"""Home route"""
+
 
 @app.get("/")
 def home():
     dog = Animal(12, 30)
     return dog.print_height()
+
+
+""" user info route """
 
 
 @app.get("/user")
