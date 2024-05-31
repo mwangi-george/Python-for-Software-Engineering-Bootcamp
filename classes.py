@@ -36,8 +36,8 @@ class Person:
 class Office:
 
     # shared variables (not part of the initialization)
-    door_color = "red"  # strings are immutable objects inside the class
-    desk_holders = ["Helen", "Dan"]   # lists are mutable objects
+    door_color = "blue"  # strings are immutable objects inside the class
+    desk_holders = ["Robert", "Dan"]   # lists are mutable objects
 
     def __init__(self, name, size_sqft, location) -> None:
         self.name = name
