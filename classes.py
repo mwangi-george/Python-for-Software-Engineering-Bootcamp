@@ -28,6 +28,32 @@ class Person:
     def person_profession(self):
         return f"{self.name}'s profession is {self.profession}"
 
+    def show_profession_again(self):
+        """Reference other methods of the same class """
+        return f"{self.person_language()} and {self.person_nationality()}"
+
+
+class Office:
+
+    # shared variables (not part of the initialization)
+    door_color = "red"  # strings are immutable objects inside the class
+    desk_holders = ["Helen", "Dan"]   # lists are mutable objects
+
+    def __init__(self, name, size_sqft, location) -> None:
+        self.name = name
+        self.size_sqft = size_sqft
+        self.location = location
+
+    def get_door_color(self):
+        return self.door_color
+
+    def get_desk_holders(self):
+        return self.desk_holders
+
+    # updating initialization values
+    def set_name(self, new_name):
+        self.name = new_name
+
 
 if __name__ == "__main__":
     # Initialize the class
