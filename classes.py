@@ -43,6 +43,8 @@ class Office:
         self.name = name
         self.size_sqft = size_sqft
         self.location = location
+        # private variables (start with underscore)
+        self._private_owner = "Mwangi George"
 
     def get_door_color(self):
         return self.door_color

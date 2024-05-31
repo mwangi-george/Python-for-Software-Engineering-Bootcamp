@@ -29,5 +29,9 @@ def office_info():
     desk_holders = office.get_desk_holders()
     desk_holders.append(["George", "Govanna", "Mark"])
 
-    office.set_name("inSupply Health")
-    return {"door_color": door_color, "desk_holders": desk_holders, "office_name": office.name}
+    office.set_name("inSupply Health Ke")
+    return {
+        "door_color": door_color,
+        "desk_holders": desk_holders,
+        "office_name": office.name,
+        "Owner": office._private_owner}
