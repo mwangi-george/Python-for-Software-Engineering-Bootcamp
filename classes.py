@@ -57,9 +57,23 @@ class Office:
         self.name = new_name
 
 
+class HappyHour:
+    """Characteristics of Happy hour at IHL"""
+
+    def __init__(self, start_time, end_time, people_available) -> None:
+        self.start_time = start_time
+        self.end_time = end_time
+        self.people_available = people_available
+
+    def amt_food_eaten_kg(self, plate_size):
+        amt = self.people_available * plate_size
+        return amt
+
+    def amt_drinks_litres(self, pack_size):
+        amt = self.people_available * pack_size
+        return amt
+
+
 if __name__ == "__main__":
     # Initialize the class
-    animal_1 = Animal(height=120, weight=20)
-    animal_2 = Animal(height=20, weight=40)
-
-    print(animal_1.print_height())
+    may = HappyHour(1600, 1800)

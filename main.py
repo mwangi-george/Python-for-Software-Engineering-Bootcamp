@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from classes import Animal, Person, Office
+from classes import Animal, Person, Office, HappyHour
 app = FastAPI()
 
 """Home route"""
@@ -36,3 +36,9 @@ def office_info():
         "office_name": office.name,
         "Owner": office._private_owner
     }
+
+
+@app.get("/happyhour")
+def happy_hour():
+    may_hh = HappyHour(1600, 1800, 20)
+    return {"Food Eaten in KG": may_hh.amt_food_eaten_kg(20), "Drinks in Litres": may_hh.amt_drinks_litres(200)}
