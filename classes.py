@@ -124,7 +124,11 @@ class Matatu(Car):
         """
         print(f"Hello {user_name}")
 
-    #
+    # class methods - allows us to call a class method or attribute with having to initialize the class first
+    @classmethod
+    def car_loved_or_hated(self, love=True):
+        if love:
+            return "This car is loved"
 
 
 if __name__ == "__main__":

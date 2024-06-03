@@ -56,4 +56,4 @@ def car_info():
         "Vehicle Capacity": matt.get_normal_capacity(),
         "Vehicle color": matt.get_vehicle_color(),
         "Extra capacity": matt.get_extra_capacity(2)
-    }
+    }, Matatu.car_loved_or_hated()  # no need to initialize a class method
