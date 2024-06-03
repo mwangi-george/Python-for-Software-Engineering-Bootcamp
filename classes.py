@@ -75,7 +75,47 @@ class HappyHour:
         return amt, self.amt_food_eaten_kg(20)
 
 
-# TODO: Class inheritance
+# TODO:
+""" Class inheritance """
+
+# Parent Class
+
+
+class Car:
+    def __init__(self, color: str, capacity: int, wheels: int) -> None:
+        self.color = color
+        self.capacity = capacity
+        self.wheels = wheels
+
+    def get_normal_capacity(self):
+        return self.capacity
+
+    def get_vehicle_color(self):
+        return self.color
+
+
+# Child Class that inherits Car class
+class Matatu(Car):
+    def __init__(self, color, capacity, wheels) -> None:
+        super().__init__(color, capacity, wheels)
+
+    def get_extra_capacity(self, car_age_years: int):
+        if car_age_years > 5:
+            extra_capacity = 0
+        else:
+            extra_capacity = 3
+        return extra_capacity
+
+    def get_wheels(self):
+        return self.wheels
+
+    # we can chnage behaviour of methods in the base Class by overwriting them
+    def get_normal_capacity(self):
+        return 30
+
+    # if we need to define methods
+
+
 if __name__ == "__main__":
     # Initialize the class
     may = HappyHour(1600, 1800)

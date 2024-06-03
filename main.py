@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from classes import Animal, Person, Office, HappyHour
+from classes import Animal, Person, Office, HappyHour, Car, Matatu
 app = FastAPI()
 
 """Home route"""
@@ -45,3 +45,14 @@ def happy_hour():
         "Food Eaten in Kilograms": may_hh.amt_food_eaten_kg(20),
         "Drinks in Litres": may_hh.amt_drinks_litres(200),
         "Best drink": may_hh._favorite_drink}
+
+
+@app.get("/car")
+def car_info():
+    matt = Matatu("brown", 35, 6)
+    return {
+        "Wheels": matt.get_wheels(),
+        "Vehicle Capacity": matt.get_normal_capacity(),
+        "Vehicle color": matt.get_vehicle_color(),
+        "Extra capacity": matt.get_extra_capacity(2)
+    }
