@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from classes import Animal, Person, Office, HappyHour, Car, Matatu
+from classes import Animal, Person, Office, HappyHour, Car, Matatu, Config
 app = FastAPI()
 
 """Home route"""
@@ -57,3 +57,9 @@ def car_info():
         "Vehicle color": matt.get_vehicle_color(),
         "Extra capacity": matt.get_extra_capacity(2)
     }, Matatu.car_loved_or_hated()  # no need to initialize a class method
+
+
+@app.get("/config")
+def configurations():
+    # Notice that the Config class doent need to be initialized
+    return f"This server can be accessed from the following endpoints: {Config.server_endpoints()}"

@@ -128,7 +128,20 @@ class Matatu(Car):
     @classmethod
     def car_loved_or_hated(self, love=True):
         if love:
-            return "This car is loved"
+            return "This car is really loved"
+
+
+class Config:
+    """ We do no have to initialize this class to access it's attributes or methods"""
+    DEVELOPMENT = "https://localhost/8000"
+    PRODUCTION = "https://superserver.com"
+
+    def __init__(self) -> None:
+        pass
+
+    @classmethod
+    def server_endpoints(self):
+        return {"dev": self.DEVELOPMENT, "prod": self.PRODUCTION}
 
 
 if __name__ == "__main__":
