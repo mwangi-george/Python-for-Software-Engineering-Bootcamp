@@ -113,7 +113,18 @@ class Matatu(Car):
     def get_normal_capacity(self):
         return 30
 
-    # if we need to define methods
+    # if we need to define methods that dont need access to the class itself we do as follows
+
+    @staticmethod
+    def greeting(user_name):
+        """ This method does not need access to the class methods or attributes
+
+        Does not need the self key
+        We can also add other parameters
+        """
+        print(f"Hello {user_name}")
+
+    #
 
 
 if __name__ == "__main__":

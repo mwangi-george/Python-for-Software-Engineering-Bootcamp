@@ -50,6 +50,7 @@ def happy_hour():
 @app.get("/car")
 def car_info():
     matt = Matatu("brown", 35, 6)
+    matt.greeting("George")
     return {
         "Wheels": matt.get_wheels(),
         "Vehicle Capacity": matt.get_normal_capacity(),
