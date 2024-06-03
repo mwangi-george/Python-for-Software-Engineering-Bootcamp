@@ -41,4 +41,4 @@ def office_info():
 @app.get("/happyhour")
 def happy_hour():
     may_hh = HappyHour(1600, 1800, 20)
-    return {"Food Eaten in KG": may_hh.amt_food_eaten_kg(20), "Drinks in Litres": may_hh.amt_drinks_litres(200)}
+    return {"Food Eaten in Kilograms": may_hh.amt_food_eaten_kg(20), "Drinks in Litres": may_hh.amt_drinks_litres(200)}
