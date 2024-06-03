@@ -64,6 +64,7 @@ class HappyHour:
         self.start_time = start_time
         self.end_time = end_time
         self.people_available = people_available
+        self._favorite_drink = "white cap"
 
     def amt_food_eaten_kg(self, plate_size):
         amt = self.people_available * plate_size
@@ -71,9 +72,10 @@ class HappyHour:
 
     def amt_drinks_litres(self, pack_size):
         amt = self.people_available * pack_size
-        return amt
+        return amt, self.amt_food_eaten_kg(20)
 
 
+# TODO: Class inheritance
 if __name__ == "__main__":
     # Initialize the class
     may = HappyHour(1600, 1800)
