@@ -132,7 +132,7 @@ class Matatu(Car):
 
 
 class Config:
-    """ We do no have to initialize this class to access it's attributes or methods"""
+    """ We do no have to initialize this class to access its attributes or methods"""
     DEVELOPMENT = "https://localhost/8000"
     PRODUCTION = "https://superserver.com"
 
