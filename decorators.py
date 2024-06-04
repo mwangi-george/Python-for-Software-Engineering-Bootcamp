@@ -24,3 +24,18 @@ def notify_reader():
 
 
 notify_reader()
+
+
+def show_enlisted_members(func):
+    def wrapper(*args, **kwargs):
+        print("No enlisted members yet!")
+        func(*args, **kwargs)
+
+
+@show_enlisted_members
+def enlist_member(first_name: str, last_name: str):
+    print(f"Hi {first_name}👋, You are our first member")
+    return first_name, last_name
+
+
+enlist_member("George", "Mwangi")
