@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+SCDatabase.db
+books.db
+
 # Distribution / packaging
 .Python
 build/
