@@ -132,7 +132,7 @@ class Matatu(Car):
 
 
 class Config:
-    """ We do no have to initialize this class to access its attributes or methods"""
+    """ We do not have to initialize this class to access its attributes or methods"""
     DEVELOPMENT = "https://localhost/8000"
     PRODUCTION = "https://superserver.com"
 
@@ -142,6 +142,20 @@ class Config:
     @classmethod
     def server_endpoints(self):
         return {"dev": self.DEVELOPMENT, "prod": self.PRODUCTION}
+
+
+class NtdModelingWorkshop:
+    def __init__(self, countries: list, partners: list, donors: list) -> None:
+        self.countries = countries
+        self.partners = partners
+        self.donors = donors
+
+    def workshop_participants(self):
+        return {
+            "Countries": self.countries,
+            "Partners": self.partners,
+            "Donors": self.donors
+        }
 
 
 if __name__ == "__main__":
