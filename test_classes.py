@@ -7,3 +7,7 @@ nairobi_workshop = NtdModelingWorkshop(
 )
 
 print(nairobi_workshop.workshop_participants())
+
+print(nairobi_workshop.countries)
+
+print(NtdModelingWorkshop.next_host())

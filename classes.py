@@ -145,6 +145,8 @@ class Config:
 
 
 class NtdModelingWorkshop:
+    next_country = "Nigeria"
+
     def __init__(self, countries: list, partners: list, donors: list) -> None:
         self.countries = countries
         self.partners = partners
@@ -156,6 +158,10 @@ class NtdModelingWorkshop:
             "Partners": self.partners,
             "Donors": self.donors
         }
+
+    @classmethod
+    def next_host(self):
+        return self.next_country
 
 
 if __name__ == "__main__":
