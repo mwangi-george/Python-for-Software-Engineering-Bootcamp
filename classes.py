@@ -164,6 +164,19 @@ class NtdModelingWorkshop:
         return self.next_country
 
 
+class Library:
+    def __init__(self, country) -> None:
+        self.country = country
+
+
+class PostMordernLibrary(Library):
+    def __init__(self, country) -> None:
+        super().__init__(country)
+
+    def print_floors(self):
+        return 5
+
+
 if __name__ == "__main__":
     # Initialize the class
     may = HappyHour(1600, 1800)

@@ -1,3 +1,4 @@
+from classes import Library, PostMordernLibrary
 from classes import NtdModelingWorkshop
 
 nairobi_workshop = NtdModelingWorkshop(
@@ -12,3 +13,6 @@ print(nairobi_workshop.countries)
 
 # Accessing attributes directly without instanciating the class
 print(NtdModelingWorkshop.next_host())
+
+pml = PostMordernLibrary("Kenya")
+print(f"pml has {pml.print_floors()} floors")
