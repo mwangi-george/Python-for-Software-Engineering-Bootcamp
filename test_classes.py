@@ -1,5 +1,4 @@
-from classes import Library, PostMordernLibrary
-from classes import NtdModelingWorkshop
+from classes import Library, PostMordernLibrary, Books, NtdModelingWorkshop
 
 nairobi_workshop = NtdModelingWorkshop(
     countries=["Kenya", "Ethiopia", "Zimbabwe", "Nigeria", "Rwanda"],
@@ -16,3 +15,6 @@ print(NtdModelingWorkshop.next_host())
 
 pml = PostMordernLibrary("Kenya")
 print(f"pml has {pml.print_floors()} floors")
+print(pml.librarian_name())
+
+print(pml)

@@ -169,12 +169,21 @@ class Library:
         self.country = country
 
 
+class Books:
+    def __init__(self, specialization) -> None:
+        self.specialization = specialization
+
+
 class PostMordernLibrary(Library):
     def __init__(self, country) -> None:
         super().__init__(country)
 
     def print_floors(self):
         return 5
+
+    @staticmethod
+    def librarian_name():
+        return "I have no Idea who that is"
 
 
 if __name__ == "__main__":
