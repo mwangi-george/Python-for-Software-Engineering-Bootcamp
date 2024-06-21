@@ -68,3 +68,11 @@ def test_unpack(input: dict[str, int], dict_key: str) -> int:
 
 return_val = test_unpack({"some_val": 34, "val2": 36}, "val2")
 print(return_val)
+
+
+def test_unpack(input: list[str], index: int) -> int:
+    return input[index]
+
+
+return_val = test_unpack(["some val"], 0)
+print(return_val)
