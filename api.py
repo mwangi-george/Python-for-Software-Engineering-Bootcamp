@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse, JSONResponse
 from pydantic import BaseModel
-from typing import Tuple
+from typing import Tuple, Optional
 
 app = FastAPI()
 
@@ -51,12 +51,12 @@ def get_book_info() -> Tuple[str, str, list]:
 class Books(BaseModel):
     book_id: int
     book_name: str
-    book_authors: list
+    # optional parameter, none by default
+    book_authors: Optional[list[str]] = None
 
 
 @app.get("/books/book_id", response_model=Books)
 def book_info() -> dict:
     book_id, book_name, book_authors = get_book_info()
-    book = Books(book_id=book_id, book_name=book_name,
-                 book_authors=book_authors)
+    book = Books(book_id=book_id, book_name=book_name)
     return book
