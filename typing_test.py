@@ -85,3 +85,7 @@ def test_unpack(input: list[str], index: int) -> Tuple[str, int]:
 
 return_val = test_unpack(["some val"], 0)
 print(return_val)
+
+
+# TODO:
+# To check types use the mypy package (mypy file.py - on the CLI)
