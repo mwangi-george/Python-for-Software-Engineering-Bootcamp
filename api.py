@@ -41,13 +41,6 @@ def user_info() -> dict:
     return user
 
 
-def get_book_info() -> Tuple[str, str, list]:
-    book_id = 1
-    book_name = "George the Great"
-    book_authors = ["George", "Moses"]
-    return book_id, book_name, book_authors
-
-
 class Books(BaseModel):
     book_id: int
     book_name: str
@@ -55,8 +48,41 @@ class Books(BaseModel):
     book_authors: Optional[list[str]] = None
 
 
+def get_book_info() -> Books:
+    content = {
+        "book_id": 1,
+        "book_name": "George the Great",
+        "book_authors": ["George", "Moses", "Mwangi"]
+    }
+
+    # return the initialized class unpacking the content dict
+    return Books(**content)
+
+
 @app.get("/books/book_id", response_model=Books)
 def book_info() -> dict:
-    book_id, book_name, book_authors = get_book_info()
-    book = Books(book_id=book_id, book_name=book_name)
-    return book
+    return get_book_info()
+
+
+# Example 3
+class Cars(BaseModel):
+    car_id: int
+    car_name: str
+    car_mileage: float
+    car_manufacturer: Optional[str] = None
+
+
+def get_car_info() -> Cars:
+    details = {
+        "car_id": 2,
+        "car_name": "BMW",
+        "car_mileage": 20003.4,
+        # "car_manufacturer": "I have no idea"
+    }
+
+    return Cars(**details)
+
+
+@app.get("/cars/id", response_model=Cars)
+def car_info() -> dict:
+    return get_car_info()
