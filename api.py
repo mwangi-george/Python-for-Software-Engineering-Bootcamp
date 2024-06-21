@@ -28,6 +28,14 @@ def get_user_info() -> Tuple[str, str]:
     return username, short_description
 
 
-@app.get("/user/me")
+class User(BaseModel):
+    usernamme: str
+    short_description: str
+
+
+@app.get("/user/me", response_model=User)
 def user_info() -> dict:
-    return {"username": "some_username", "short_description": "My bio is here"}
+    username, short_description = get_user_info()
+
+    user = User(usernamme=username, short_description=short_description)
+    return user
