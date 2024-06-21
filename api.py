@@ -39,3 +39,24 @@ def user_info() -> dict:
 
     user = User(usernamme=username, short_description=short_description)
     return user
+
+
+def get_book_info() -> Tuple[str, str, list]:
+    book_id = 1
+    book_name = "George the Great"
+    book_authors = ["George", "Moses"]
+    return book_id, book_name, book_authors
+
+
+class Books(BaseModel):
+    book_id: int
+    book_name: str
+    book_authors: list
+
+
+@app.get("/books/book_id", response_model=Books)
+def book_info() -> dict:
+    book_id, book_name, book_authors = get_book_info()
+    book = Books(book_id=book_id, book_name=book_name,
+                 book_authors=book_authors)
+    return book
