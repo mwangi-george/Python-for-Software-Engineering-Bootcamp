@@ -1,4 +1,4 @@
-from typing import Union, Optional
+from typing import Union, Optional, Tuple
 
 
 def test_func():
@@ -70,8 +70,17 @@ return_val = test_unpack({"some_val": 34, "val2": 36}, "val2")
 print(return_val)
 
 
-def test_unpack(input: list[str], index: int) -> int:
+def test_unpack(input: list[str], index: int) -> str:
     return input[index]
+
+
+return_val = test_unpack(["some val"], 0)
+print(return_val)
+
+
+# tuples
+def test_unpack(input: list[str], index: int) -> Tuple[str, int]:
+    return input[index], index
 
 
 return_val = test_unpack(["some val"], 0)
