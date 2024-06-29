@@ -161,11 +161,18 @@ class House(BaseModel):
     make: str = Field(
         title="Material Used",
         description="This is the main material used to make the house",
-        max_length=50,
-        min_length=1,
         examples=["Wood", "Stone", "Clay"],
         default=None
     )
+    location: str = Field(
+        title="Location of the house",
+        description="This is the county where the house is located"
+    )
+
+    # we can define configurations to apply to all attributes as follows
+    class Config:
+        str_max_length = 50
+        str_min_length = 1
 
 
 def get_house_info() -> House:
@@ -173,7 +180,8 @@ def get_house_info() -> House:
         "length": 20,
         "width": 15,
         "height": 10,
-        "make": "Stone"
+        "make": "Stone",
+        "location": "Kiambu"
     }
 
     return House(**details)
