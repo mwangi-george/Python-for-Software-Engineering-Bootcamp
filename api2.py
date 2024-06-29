@@ -144,3 +144,15 @@ def add_user(new_user_info: User):
     user_id = create_user(new_user_info)
     created_user = CreateUserResponse(user_id=user_id)
     return created_user
+
+
+# TODO: Query Parameters
+
+class MultipleUsersResponse(BaseModel):
+    """Every element in the users list is going to be of class User"""
+    users: list[User]
+
+
+@app.get("/users", response_model=MultipleUsersResponse)
+def get_multiple_users(user_id: int):
+    pass
