@@ -123,19 +123,15 @@ def create_user(user_profile: User):
     # Get the data using User
     # since the keys start from 0, length will be 1
     new_user_id = len(all_names)
-    id = user_profile.id
-    first_name = user_profile.first_name
-    middle_name = user_profile.middle_name
-    last_name = user_profile.last_name
 
     print("Before")
     print(all_names)
     # add new user to dictionary using keys
     all_names[new_user_id] = {
-        "id": id,
-        "first_name": first_name,
-        "middle_name": middle_name,
-        "last_name": last_name
+        "id":  user_profile.id,
+        "first_name": user_profile.first_name,
+        "middle_name": user_profile.middle_name,
+        "last_name":  user_profile.last_name
     }
     print("After")
     print(all_names)
@@ -144,3 +140,4 @@ def create_user(user_profile: User):
 @app.post("/users")
 def add_user(new_user_info: User):
     create_user(new_user_info)
+    return {"status": "User added successfully"}
