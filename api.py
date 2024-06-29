@@ -122,7 +122,7 @@ class ProfileInfo(BaseModel):
 class Worker(BaseModel):
     id: int
     username: str
-    profile_info: ProfileInfo # class defined above
+    profile_info: ProfileInfo # Referencing another pydantic class
 
 
 def get_worker_info() -> Worker:
