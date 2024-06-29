@@ -95,44 +95,52 @@ class User(BaseModel):
         str_min_length = 2
 
 
-def get_name(name_id: str = "default") -> User:
-    # Using a list of dictionaries for easier subsetting using the index
-    all_names = {
-        "default": {
-            "id": 0,
-            "first_name": "George",
-            "last_name": "Mwangi"
-        },
-        "user_1": {
-            "id": 1,
-            "first_name": "Alex",
-            "middle_name": "Ross",
-            "last_name": "McRuger"
-        },
-        "user_2": {
-            "id": 2,
-            "first_name": "James",
-            "last_name": "Bond"
-        },
-        "user_3": {
-            "id": 3,
-            "first_name": "Michael",
-            "middle_name": "McGovern",
-            "last_name": "John II"
-        }
+# Using a list of dictionaries for easier subsetting
+# defining it globally for later use
+all_names = {
+    0: {
+        "id": 0,
+        "first_name": "George",
+        "last_name": "Mwangi"
     }
+}
 
-    user = all_names[name_id]
+
+def get_name(user_id: int = "default") -> User:
+    user = all_names[user_id]
     return User(**user)
 
 
-@app.get("/user/{name_id}/{origin}/{age}", response_model=User)
-def get_name_by_id(name_id: str, origin: str, age: int) -> dict:
-    return get_name(name_id)
+@app.get("/user/{user_id}", response_model=User)
+def get_name_by_id(user_id: int = 0) -> dict:
+    return get_name(user_id)
 
 
 # TODO: Request Bodies (Sending Data to our server)
 
+# function to add a user (probably to a database)
+def create_user(user_profile: User):
+    # Get the data using User
+    # since the keys start from 0, length will be 1
+    new_user_id = len(all_names)
+    id = user_profile.id
+    first_name = user_profile.first_name
+    middle_name = user_profile.middle_name
+    last_name = user_profile.last_name
+
+    print("Before")
+    print(all_names)
+    # add new user to dictionary using keys
+    all_names[new_user_id] = {
+        "id": id,
+        "first_name": first_name,
+        "middle_name": middle_name,
+        "last_name": last_name
+    }
+    print("After")
+    print(all_names)
+
+
 @app.post("/users")
-def add_user():
-    pass
+def add_user(new_user_info: User):
+    create_user(new_user_info)
