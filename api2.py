@@ -126,6 +126,6 @@ def get_name(name_id: str = "default") -> Name:
     return Name(**person_name)
 
 
-@app.get("/names/{name_id}/{origin}", response_model=Name)
-def get_name_by_id(name_id: str, origin: str) -> dict:
+@app.get("/names/{name_id}/{origin}/{age}", response_model=Name)
+def get_name_by_id(name_id: str, origin: str, age: int) -> dict:
     return get_name(name_id)
