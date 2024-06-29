@@ -87,3 +87,61 @@ def get_car_info() -> Cars:
 @app.get("/cars/id", response_model=Cars)
 def car_info() -> dict:
     return get_car_info()
+
+
+
+# Example 4
+class Breakfast(BaseModel):
+    drink: str
+    snacks: dict
+    dissert: Optional[list] = None
+
+
+def get_breakfast() -> Breakfast:
+    content = {
+        "drink": "Mixed Tea",
+        "snacks": {1: "Mandazi", 2: "Fried Eggs", 3: "Veges"},
+        "dissert": ["Water Melon", "Pineapples", "Cake"]
+    }
+
+    return Breakfast(**content)
+
+@app.get("/breakfast", response_model = Breakfast)
+def breakfast() -> dict:
+    return get_breakfast()
+
+
+# Nesting schemas
+
+class ProfileInfo(BaseModel):
+    short_bio: str
+    long_bio: str
+    occupation: Optional[str]
+
+
+class Worker(BaseModel):
+    id: int
+    username: str
+    profile_info: ProfileInfo # class defined above
+
+
+def get_worker_info() -> Worker:
+    profile_contents = {
+        "short_bio": "This is our short bio",
+        "long_bio": "This is our very long bio",
+        "occupation": "Software Engineer"
+    }
+    profile_info = ProfileInfo(**profile_contents)
+
+    worker_contents = {
+        "id": 1234,
+        "username": "user_1",
+        "profile_info": profile_info
+    }
+
+    return Worker(**worker_contents)
+
+
+@app.get("/worker", response_model=Worker)
+def worker() -> list:
+    return get_worker_info()
