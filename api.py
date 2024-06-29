@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse, JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Tuple, Optional
 
 app = FastAPI()
@@ -89,7 +89,6 @@ def car_info() -> dict:
     return get_car_info()
 
 
-
 # Example 4
 class Breakfast(BaseModel):
     drink: str
@@ -106,7 +105,8 @@ def get_breakfast() -> Breakfast:
 
     return Breakfast(**content)
 
-@app.get("/breakfast", response_model = Breakfast)
+
+@app.get("/breakfast", response_model=Breakfast)
 def breakfast() -> dict:
     return get_breakfast()
 
@@ -122,7 +122,7 @@ class ProfileInfo(BaseModel):
 class Worker(BaseModel):
     id: int
     username: str
-    profile_info: ProfileInfo # Referencing another pydantic class
+    profile_info: ProfileInfo  # Referencing another pydantic class
 
 
 def get_worker_info() -> Worker:
@@ -145,3 +145,40 @@ def get_worker_info() -> Worker:
 @app.get("/worker", response_model=Worker)
 def worker() -> list:
     return get_worker_info()
+
+
+# TODO: Response Models
+# Adding more information to schemas using the Field class from pydantic
+
+class House(BaseModel):
+    length: float = Field(
+        alias="length",
+        title="House Length in Meters",
+        description="This is the lenght of the house"
+    )
+    width: float
+    height: float
+    make: str = Field(
+        title="Material Used",
+        description="This is the main material used to make the house",
+        max_length=50,
+        min_length=1,
+        examples=["Wood", "Stone", "Clay"],
+        default=None
+    )
+
+
+def get_house_info() -> House:
+    details = {
+        "length": 20,
+        "width": 15,
+        "height": 10,
+        "make": "Stone"
+    }
+
+    return House(**details)
+
+
+@app.get("/house", response_model=House)
+def house() -> dict:
+    return get_house_info()
