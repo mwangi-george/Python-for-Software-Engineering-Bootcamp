@@ -84,7 +84,6 @@ def get_road_by_id(road_id: int) -> dict:
 # More than one path parameters
 
 class User(BaseModel):
-    id: int
     first_name: str
     middle_name: Optional[str] = None
     last_name: str
@@ -99,7 +98,6 @@ class User(BaseModel):
 # defining it globally for later use
 all_names = {
     0: {
-        "id": 0,
         "first_name": "George",
         "last_name": "Mwangi"
     }
@@ -118,22 +116,31 @@ def get_name_by_id(user_id: int = 0) -> dict:
 
 # TODO: Request Bodies (Sending Data to our server)
 
+
+# a simple model to store the returned id
+class CreateUserResponse(BaseModel):
+    user_id: int
+
 # function to add a user (probably to a database)
-def create_user(user_profile: User):
+
+
+def create_user(user_profile: User) -> int:
     # Get the data using User
     # since the keys start from 0, length will be 1
     new_user_id = len(all_names)
 
     # add new user to dictionary using keys
     all_names[new_user_id] = {
-        "id":  user_profile.id,
         "first_name": user_profile.first_name,
         "middle_name": user_profile.middle_name,
         "last_name":  user_profile.last_name
     }
 
+    return new_user_id
 
-@app.post("/users")
+
+@app.post("/users", response_model=CreateUserResponse)
 def add_user(new_user_info: User):
-    create_user(new_user_info)
-    return {"status": "User added successfully"}
+    user_id = create_user(new_user_info)
+    created_user = CreateUserResponse(user_id=user_id)
+    return created_user
