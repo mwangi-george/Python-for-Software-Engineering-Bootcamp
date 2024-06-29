@@ -83,7 +83,7 @@ def get_road_by_id(road_id: int) -> dict:
 
 # More than one path parameters
 
-class Name(BaseModel):
+class User(BaseModel):
     id: int
     first_name: str
     middle_name: Optional[str] = None
@@ -95,7 +95,7 @@ class Name(BaseModel):
         str_min_length = 2
 
 
-def get_name(name_id: str = "default") -> Name:
+def get_name(name_id: str = "default") -> User:
     # Using a list of dictionaries for easier subsetting using the index
     all_names = {
         "default": {
@@ -122,10 +122,17 @@ def get_name(name_id: str = "default") -> Name:
         }
     }
 
-    person_name = all_names[name_id]
-    return Name(**person_name)
+    user = all_names[name_id]
+    return User(**user)
 
 
-@app.get("/names/{name_id}/{origin}/{age}", response_model=Name)
+@app.get("/user/{name_id}/{origin}/{age}", response_model=User)
 def get_name_by_id(name_id: str, origin: str, age: int) -> dict:
     return get_name(name_id)
+
+
+# TODO: Request Bodies (Sending Data to our server)
+
+@app.post("/users")
+def add_user():
+    pass
