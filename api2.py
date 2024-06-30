@@ -106,6 +106,14 @@ all_users = {
 
 
 def get_user(user_id: int = 0) -> User:
+    """
+    Function to get a user's information by id 
+
+    :param user_id: int - Unique monotonically increasing integer id
+    :return: User object
+    """
+
+    # The docstring can be accessed by calling get_user().__doc__
     user = all_users[user_id]
     return User(**user)
 
@@ -113,6 +121,7 @@ def get_user(user_id: int = 0) -> User:
 @app.get("/user/{user_id}", response_model=User)
 def get_user_by_id(user_id: int = 0) -> dict:
     user = get_user(user_id)
+    print(f"The docstring of get_user function is {get_user.__doc__}")
     return user
 
 
@@ -241,7 +250,9 @@ def update_user_middle_name(user_id: int, middle_name: str) -> User:
     Endpoint for updating a user's middle name
 
     :param user_id: int - Unique monotonically increasing integer id
+
     :param middle_name: str - New user's middle name string
+
     :return: A dictionary with the updated User's information
     """
     update_middle_name(user_id, middle_name)
