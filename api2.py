@@ -192,11 +192,27 @@ def get_multiple_users_paginated(start: int = 0, limit: int = 2):
     return formatted_users
 
 
-# TODO: PUT and Delete Methods
+# TODO: PUT Method
 """ The put method allows us to create a new entity or update an existing one"""
 
 
 @app.put("/user/{user_id}")
 def update_user(user_id: int, user_profile: User) -> None:
     create_or_update_user(user_profile, user_id)
+    return None
+
+
+# TODO: Delete Method
+""" Allows us to delete an entity """
+
+
+# a function to perform deletion
+def delete_user(user_id: int) -> None:
+    # add error handling for key not found
+    del all_users[user_id]  # just deleting the keys
+
+
+@app.delete("/user/{user_id}")
+def remove_user(user_id: int) -> None:
+    delete_user(user_id)
     return None
