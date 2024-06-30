@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, Tuple
 
 app = FastAPI()
 
@@ -26,6 +26,7 @@ class Movie(BaseModel):
 
 class MultipleMoviesResponse(BaseModel):
     movies: list[Movie]
+    total: int
 
 
 all_movies = {
@@ -62,10 +63,11 @@ def get_movie(movie_id: int = 0) -> Movie:
     return Movie(**movie)
 
 
-def get_multiple_movies_paginated(start: int = 0, limit: int = 20):
+def get_multiple_movies_paginated(start: int = 0, limit: int = 20) -> Tuple[list[Movie], int]:
 
     list_of_movies = []
     movie_dict_keys = list(all_movies.keys())
+    total = len(movie_dict_keys)
 
     for index in range(0, len(movie_dict_keys), 1):
         if index < start:
@@ -75,7 +77,7 @@ def get_multiple_movies_paginated(start: int = 0, limit: int = 20):
         list_of_movies.append(movie)
         if len(list_of_movies) >= limit:
             break
-    return list_of_movies
+    return list_of_movies, total
 
 
 @app.post("/movies")
@@ -94,6 +96,6 @@ def get_movie_by_id(movie_id: int) -> Movie:
 # Get multiple movies details (query parameters)
 @app.get("/movies", response_model=MultipleMoviesResponse)
 def get_multiple_movies(start: int = 0, limit: int = 10) -> MultipleMoviesResponse:
-    movies = get_multiple_movies_paginated(start, limit)
-    formatted_movies = MultipleMoviesResponse(movies=movies)
+    movies, total = get_multiple_movies_paginated(start, limit)
+    formatted_movies = MultipleMoviesResponse(movies=movies, total=total)
     return formatted_movies
