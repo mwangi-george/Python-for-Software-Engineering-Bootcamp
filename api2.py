@@ -156,11 +156,30 @@ class MultipleUsersResponse(BaseModel):
 
 
 # functions to get multiple users
-def get_multiple_users_with_pagination(start: int, limit: int):
+def get_multiple_users_with_pagination(start: int, limit: int) -> list[User]:
     """Get 2 users at a time"""
-    pass
+
+    list_of_users = []  # start with an empty list of users
+
+    keys = list(all_users.keys())  # get all keys in the all_users dictionary
+
+    # loop over the keys
+    for index in range(0, len(keys), 1):
+        if index < start:
+            continue
+
+        current_key = keys[index]
+        user = get_user(current_key)
+        list_of_users.append(user)
+
+        if len(list_of_users) >= limit:
+            break
+
+    return list_of_users
 
 
 @app.get("/users", response_model=MultipleUsersResponse)
 def get_multiple_users_paginated(start: int = 0, limit: int = 2):
-    get_multiple_users_with_pagination(start, limit)
+    users = get_multiple_users_with_pagination(start, limit)
+    formatted_users = MultipleUsersResponse(users=users)
+    return formatted_users
