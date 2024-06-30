@@ -126,11 +126,14 @@ class CreateUserResponse(BaseModel):
 # function to add a user (probably to a database)
 
 
-def create_user(user_profile: User) -> int:
+def create_or_update_user(user_profile: User, new_user_id: Optional[int] = None) -> int:
     # Get the data using User
     # since the keys start from 0, length will be 1
-    new_user_id = len(all_users)
+    if new_user_id is None:
+        new_user_id = len(all_users)
 
+    print("Before")
+    print(all_users)
     # add new user to dictionary using keys
     all_users[new_user_id] = {
         "first_name": user_profile.first_name,
@@ -138,12 +141,15 @@ def create_user(user_profile: User) -> int:
         "last_name":  user_profile.last_name
     }
 
+    print("After")
+    print(all_users)
+
     return new_user_id
 
 
 @app.post("/users", response_model=CreateUserResponse)
 def add_user(new_user_info: User):
-    user_id = create_user(new_user_info)
+    user_id = create_or_update_user(new_user_info)
     created_user = CreateUserResponse(user_id=user_id)
     return created_user
 
@@ -184,3 +190,13 @@ def get_multiple_users_paginated(start: int = 0, limit: int = 2):
     users, total = get_multiple_users_with_pagination(start, limit)
     formatted_users = MultipleUsersResponse(users=users, total=total)
     return formatted_users
+
+
+# TODO: PUT and Delete Methods
+""" The put method allows us to create a new entity or update an existing one"""
+
+
+@app.put("/user/{user_id}")
+def update_user(user_id: int, user_profile: User) -> None:
+    create_or_update_user(user_profile, user_id)
+    return None
