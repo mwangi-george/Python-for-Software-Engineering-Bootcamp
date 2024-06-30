@@ -216,3 +216,26 @@ def delete_user(user_id: int) -> None:
 def remove_user(user_id: int) -> None:
     delete_user(user_id)
     return None
+
+
+# TODO: The Patch Method
+"""
+The PATCH method is used when you want to apply partial modifications to a resource. It is
+similar to the PUT method in that you specify exactly the resource you want to update, but the
+PUT method is used for either an insert or a replace, whereas the PATCH is a partial update.
+"""
+
+""" implement the PATCH method to update the user information. Specifically, the
+PATCH method should allow updating the middle name, but no other properties.
+"""
+
+
+def update_middle_name(user_id: int, middle_name: str) -> None:
+    all_users[user_id]["middle_name"] = middle_name
+    return None
+
+
+@app.patch("/user/{user_id}", response_model=User)
+def update_user_middle_name(user_id: int, middle_name: str) -> User:
+    update_middle_name(user_id, middle_name)
+    return get_user(user_id=user_id)
