@@ -37,6 +37,12 @@ all_movies = {
 }
 
 
+# Create a Movie
+@app.post("/movie/movie_id")
+def create_movie(movie_id) -> None:
+    pass
+
+
 def get_movie(movie_id: int = 0) -> Movie:
     movie = all_movies[movie_id]
     return Movie(**movie)
