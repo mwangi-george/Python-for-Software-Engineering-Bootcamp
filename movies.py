@@ -8,9 +8,7 @@ app = FastAPI()
 class Movie(BaseModel):
     title: str = Field(
         title="Movie title",
-        description="This is the title of the movie",
-        max_length=50,
-        min_length=1
+        description="This is the title of the movie"
     )
     release_year: int
     genre: str = Field(max_length=20)
@@ -18,10 +16,12 @@ class Movie(BaseModel):
     duration_min: int
     rating: float
     created_at: str = Field(
-        description="This is the date when the movie was created",
-        max_length=20,
-        min_length=4
+        description="This is the date when the movie was created"
     )
+
+    class Config:
+        str_max_length = 50
+        str_min_length = 4
 
 
 all_movies = {
@@ -37,21 +37,41 @@ all_movies = {
 }
 
 
+def new_movie(movie_details: Movie) -> None:
+
+    new_movie_id = len(all_movies)
+
+    all_movies[new_movie_id] = {
+        "title": movie_details.title,
+        "release_year": movie_details.release_year,
+        "genre": movie_details.genre,
+        "director": movie_details.director,
+        "duration_min": movie_details.duration_min,
+        "rating": movie_details.rating,
+        "created_at": movie_details.created_at
+    }
+    return None
+
 # Create a Movie
-@app.post("/movie/movie_id")
-def create_movie(movie_id) -> None:
-    pass
+
+
+@app.post("/movies")
+def create_movie(movie_details: Movie) -> None:
+    """Endpoing to create a new movie"""
+    new_movie(movie_details)
+    return None
 
 
 def get_movie(movie_id: int = 0) -> Movie:
     movie = all_movies[movie_id]
     return Movie(**movie)
 
+
 # Get Movie details by id
 
 
 @app.get("/movie/{movie_id}", response_model=Movie)
-def get_movie_by_id(movie_id: int) -> dict:
+def get_movie_by_id(movie_id: int) -> Movie:
     """Endpoint to get movie details by id"""
     return get_movie(movie_id=movie_id)
 
