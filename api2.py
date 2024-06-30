@@ -96,22 +96,24 @@ class User(BaseModel):
 
 # Using a list of dictionaries for easier subsetting
 # defining it globally for later use
-all_names = {
+all_users = {
     0: {
         "first_name": "George",
+        "middle_name": "Ngugi",
         "last_name": "Mwangi"
     }
 }
 
 
-def get_name(user_id: int = "default") -> User:
-    user = all_names[user_id]
+def get_user(user_id: int = 0) -> User:
+    user = all_users[user_id]
     return User(**user)
 
 
 @app.get("/user/{user_id}", response_model=User)
-def get_name_by_id(user_id: int = 0) -> dict:
-    return get_name(user_id)
+def get_user_by_id(user_id: int = 0) -> dict:
+    user = get_user(user_id)
+    return user
 
 
 # TODO: Request Bodies (Sending Data to our server)
@@ -127,10 +129,10 @@ class CreateUserResponse(BaseModel):
 def create_user(user_profile: User) -> int:
     # Get the data using User
     # since the keys start from 0, length will be 1
-    new_user_id = len(all_names)
+    new_user_id = len(all_users)
 
     # add new user to dictionary using keys
-    all_names[new_user_id] = {
+    all_users[new_user_id] = {
         "first_name": user_profile.first_name,
         "middle_name": user_profile.middle_name,
         "last_name":  user_profile.last_name
@@ -153,6 +155,11 @@ class MultipleUsersResponse(BaseModel):
     users: list[User]
 
 
-@app.get("/users", response_model=MultipleUsersResponse)
-def get_multiple_users(user_id: int):
+# functions to get multiple users (2 users at a time)
+def get_multiple_users_with_pagination(start: int, limit: int):
     pass
+
+
+@app.get("/users", response_model=MultipleUsersResponse)
+def get_multiple_users_paginated(start: int = 0, limit: int = 2):
+    get_multiple_users_with_pagination(start, limit)
