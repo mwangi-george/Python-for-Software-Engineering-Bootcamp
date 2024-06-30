@@ -155,8 +155,9 @@ class MultipleUsersResponse(BaseModel):
     users: list[User]
 
 
-# functions to get multiple users (2 users at a time)
+# functions to get multiple users
 def get_multiple_users_with_pagination(start: int, limit: int):
+    """Get 2 users at a time"""
     pass
 
 
