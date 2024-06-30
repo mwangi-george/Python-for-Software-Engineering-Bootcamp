@@ -237,5 +237,12 @@ def update_middle_name(user_id: int, middle_name: str) -> None:
 
 @app.patch("/user/{user_id}", response_model=User)
 def update_user_middle_name(user_id: int, middle_name: str) -> User:
+    """
+    Endpoint for updating a user's middle name
+
+    :param user_id: int - Unique monotonically increasing integer id
+    :param middle_name: str - New user's middle name string
+    :return: A dictionary with the updated User's information
+    """
     update_middle_name(user_id, middle_name)
     return get_user(user_id=user_id)
