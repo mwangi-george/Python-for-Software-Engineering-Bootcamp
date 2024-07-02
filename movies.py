@@ -1,6 +1,8 @@
 from fastapi import FastAPI
+from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel, Field
 from typing import Optional, Tuple
+
 
 app = FastAPI()
 
@@ -78,6 +80,12 @@ def get_multiple_movies_paginated(start: int = 0, limit: int = 20) -> Tuple[list
         if len(list_of_movies) >= limit:
             break
     return list_of_movies, total
+
+
+@app.get("/", response_class=PlainTextResponse)
+def home():
+    """Endpoint for Application Home Page"""
+    return "Movies Backend Application"
 
 
 @app.post("/movies")

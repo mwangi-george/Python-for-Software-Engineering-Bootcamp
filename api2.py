@@ -113,7 +113,7 @@ def get_user(user_id: int = 0) -> User:
     :return: User object
     """
 
-    # The docstring can be accessed by calling get_user().__doc__
+    # The docstring can be accessed by calling get_user.__doc__
     user = all_users[user_id]
     return User(**user)
 
