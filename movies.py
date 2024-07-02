@@ -31,6 +31,14 @@ class MultipleMoviesResponse(BaseModel):
     total: int
 
 
+class MovieDeletionConfirmation(BaseModel):
+    movie_name: str
+
+
+class MovieCreationResponse(BaseModel):
+    movie_id: int
+
+
 all_movies = {
     0: {
         "title": "My journey in Software Engineering",
@@ -44,9 +52,10 @@ all_movies = {
 }
 
 
-def new_movie(movie_details: Movie) -> None:
+def new_update_movie(movie_details: Movie, new_movie_id: Optional[int] = None) -> int:
 
-    new_movie_id = len(all_movies)
+    if new_movie_id is None:
+        new_movie_id = len(all_movies)
 
     all_movies[new_movie_id] = {
         "title": movie_details.title,
@@ -57,7 +66,7 @@ def new_movie(movie_details: Movie) -> None:
         "rating": movie_details.rating,
         "created_at": movie_details.created_at
     }
-    return None
+    return new_movie_id
 
 
 def get_movie(movie_id: int = 0) -> Movie:
@@ -82,6 +91,13 @@ def get_multiple_movies_paginated(start: int = 0, limit: int = 20) -> Tuple[list
     return list_of_movies, total
 
 
+def delete_movie(movie_id: int):
+    movie_name = all_movies[movie_id]["title"]
+
+    del all_movies[movie_id]
+    return movie_name
+
+
 @app.get("/", response_class=PlainTextResponse)
 def home():
     """Endpoint for Application Home Page"""
@@ -91,7 +107,7 @@ def home():
 @app.post("/movies")
 def create_movie(movie_details: Movie) -> None:
     """Endpoing to create a new movie"""
-    new_movie(movie_details)
+    new_update_movie(movie_details)
     return None
 
 
@@ -107,3 +123,17 @@ def get_multiple_movies(start: int = 0, limit: int = 10) -> MultipleMoviesRespon
     movies, total = get_multiple_movies_paginated(start, limit)
     formatted_movies = MultipleMoviesResponse(movies=movies, total=total)
     return formatted_movies
+
+
+@app.delete("/movie/{movie_id}", response_model=MovieDeletionConfirmation)
+def remove_movie(movie_id: int) -> MovieDeletionConfirmation:
+    movie_name = delete_movie(movie_id)
+    formatted_movie_name = MovieDeletionConfirmation(movie_name=movie_name)
+    return formatted_movie_name
+
+
+@app.put("/movie/movie_id", response_model=MovieCreationResponse)
+def update_or_create_movie(movie_id: int, movie_details: Movie) -> dict:
+    movie_id = new_update_movie(movie_details=Movie, new_movie_id=movie_id)
+    formatted_movie_id = MovieCreationResponse(movie_id=movie_id)
+    return formatted_movie_id
