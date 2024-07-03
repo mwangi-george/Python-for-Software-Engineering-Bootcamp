@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Tuple
 
 
@@ -11,6 +11,11 @@ class Device(BaseModel):
     title: str
     year_made: int
     company: str
+
+
+class MultipleDeviceResponse(BaseModel):
+    device: list[Device]
+    total: int
 
 
 all_devices = {
@@ -37,11 +42,19 @@ def new_device(device_profile: Device):
     }
 
 
+def multiple_devices(start: int = 0, limit: int = 20) -> Tuple[Device, int]:
+
+
 @app.get("/device/{device_id}", response_model=Device)
 def get_device_by_id(device_id: int = 0) -> Device:
     return get_device_details(device_id=device_id)
 
 
-@app.post("/movies")
+@app.post("/devices")
 def create_device(device_profile: Device):
     new_device(device_profile)
+
+
+@app.get("/devices", response_model=MultipleDeviceResponse)
+def get_muiltiple_devices() -> MultipleDeviceResponse:
+    pass
