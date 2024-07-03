@@ -37,11 +37,12 @@ async def get_device_details(device_id: int = 0) -> Device:
 
     # in the case of reading from DB, we can wait which can only happen inside an asynchronous function
     # await get_device_from_db(device_id)
+    # best used at the lowest level where we are bound by network IO (input/output) - just time attributed to sending data between monitored processes.
 
     return Device(**device)
 
 
-def new_device(device_profile: Device):
+async def new_device(device_profile: Device):
     new_device_id = len(all_devices)
 
     all_devices[new_device_id] = {
@@ -60,7 +61,7 @@ async def get_device_by_id(device_id: int = 0) -> Device:
 
 @app.post("/devices")
 async def create_device(device_profile: Device):
-    new_device(device_profile)
+    await new_device(device_profile)
 
 
 @app.get("/devices", response_model=MultipleDeviceResponse)
