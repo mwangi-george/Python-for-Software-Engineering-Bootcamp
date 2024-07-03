@@ -27,8 +27,17 @@ all_devices = {
 }
 
 
-def get_device_details(device_id: int = 0) -> Device:
+# TODO: Asynchronous functions
+
+async def get_device_details(device_id: int = 0) -> Device:
+
+    # Currently reading from a dictionary
+    # Later read from DB
     device = all_devices[device_id]
+
+    # in the case of reading from DB, we can wait which can only happen inside an asynchronous function
+    # await get_device_from_db(device_id)
+
     return Device(**device)
 
 
@@ -42,19 +51,18 @@ def new_device(device_profile: Device):
     }
 
 
-def multiple_devices(start: int = 0, limit: int = 20) -> Tuple[Device, int]:
-
-
 @app.get("/device/{device_id}", response_model=Device)
-def get_device_by_id(device_id: int = 0) -> Device:
-    return get_device_details(device_id=device_id)
+async def get_device_by_id(device_id: int = 0) -> Device:
+    # since we are calling an asychronously defined function we use the await keyword
+    device_details = await get_device_details(device_id=device_id)
+    return device_details
 
 
 @app.post("/devices")
-def create_device(device_profile: Device):
+async def create_device(device_profile: Device):
     new_device(device_profile)
 
 
 @app.get("/devices", response_model=MultipleDeviceResponse)
-def get_muiltiple_devices() -> MultipleDeviceResponse:
+async def get_muiltiple_devices() -> MultipleDeviceResponse:
     pass
