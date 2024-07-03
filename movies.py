@@ -132,8 +132,8 @@ def remove_movie(movie_id: int) -> MovieDeletionConfirmation:
     return formatted_movie_name
 
 
-@app.put("/movie/movie_id", response_model=MovieCreationResponse)
+@app.put("/movie/{movie_id}", response_model=MovieCreationResponse)
 def update_or_create_movie(movie_id: int, movie_details: Movie) -> dict:
-    movie_id = new_update_movie(movie_details=Movie, new_movie_id=movie_id)
+    movie_id = new_update_movie(movie_details, movie_id)
     formatted_movie_id = MovieCreationResponse(movie_id=movie_id)
     return formatted_movie_id
