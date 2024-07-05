@@ -1,0 +1,1 @@
+select * from master limit  10;
