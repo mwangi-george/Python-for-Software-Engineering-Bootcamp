@@ -37,8 +37,16 @@ CREATE TABLE IF NOT EXISTS public.event_info (
 DROP TABLE public.event_info;
 
 -- Deleting a schema.
-DROP SCHEMA my_tables_schema; -- This will cause an error if there are tables inside
+-- DROP SCHEMA my_tables_schema; -- This will cause an error if there are tables inside
 
 -- To clean dependencies inside the schema
-DROP SCHEMA my_tables_schema CASCADE;
+-- DROP SCHEMA my_tables_schema CASCADE;
 
+
+-- Altering table structure e.g. add or remove columns
+ALTER TABLE user_info ADD COLUMN region VARCHAR(30);
+
+-- ALTER TABLE user_info DROP COLUMN region;
+
+-- Say we realise our userbase is growing and we need to update id column of user_info table to bigint type
+ALTER TABLE user_info ALTER COLUMN id TYPE bigint;
