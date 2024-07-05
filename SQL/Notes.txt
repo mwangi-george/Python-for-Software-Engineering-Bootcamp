@@ -103,3 +103,11 @@ CREATE TABLE IF NOT EXISTS event_log (
 );
 
 
+-------------------------Creating a database------------------------------
+
+CREATE DATABASE dbname;
+DROP DATABASE dbname; # for deleting a database
+
+
+-------------------------Creating Schemas / Tables---------------------------
+CREATE SCHEMA schema_name;
