@@ -13,3 +13,12 @@ Indexing provide quicker access to data through hash maps.
 Columns that are often used for filtering are usually indexed, 
 since it provides quicker access to identify groups of data without having
 to scan the whole table
+
+
+--------------------------------Table Relations-------------------------
+
+1. One-to-one Relation 
+One row in one table corresponds to one row in another table
+
+2. One-to-many Relation
+One row in one table corresponds to multiple rows in another table
