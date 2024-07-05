@@ -84,9 +84,20 @@ and validation.
 Generally a collection of tables and information on them
 Defines properties and structure of the database
 
+# Example Schema
+
 CREATE TABLE IF NOT EXISTS user_info (
     id INT PRIMARY KEY NOT NULL,
     name VARCHAR(25),
     join_date DATE,
     email TEXT
-)
+);
+
+CREATE TABLE IF NOT EXISTS event_log (
+    event_key SERIAL PRIMARY KEY NOT NULL,
+    event_id INT NOT NULL,
+    time TIMESTAMP,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user_info (id),
+    FOREIGN KEY (event_id) REFERENCES event_info (id)
+);
