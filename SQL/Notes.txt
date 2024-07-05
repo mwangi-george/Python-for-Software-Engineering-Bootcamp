@@ -119,3 +119,9 @@ DROP SCHEMA schema_name; # for deleting Schemas
 
 
 ------------------------Creating Tables into Database Schemas--------------------
+CREATE TABLE IF NOT EXISTS (
+    id INT PRIMARY KEY NOT NULL,
+    name VARCHAR(25),
+    join_date DATE,
+    email TEXT
+);
