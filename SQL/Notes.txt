@@ -60,3 +60,9 @@ and validation.
     -> interval 
 
 
+4. Additional data types
+    -> boolean
+    -> money
+    -> bytea
+    -> enumerated
+    -> User defined
