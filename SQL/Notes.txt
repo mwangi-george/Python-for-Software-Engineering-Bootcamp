@@ -64,5 +64,5 @@ and validation.
     -> boolean
     -> money
     -> bytea
-    -> enumerated
+    -> enumerated (custom -series of objects for ordering, eg in months)
     -> User defined
