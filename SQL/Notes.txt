@@ -1,0 +1,8 @@
+------------Partitions-------------------
+
+Partitions split a large table into smaller table splits by the 
+partition key/column eg date. This allows for more efficient storage
+and faster querying when filtering by partition e.g all data since date X
+
+Good thing about partitions is that they dont affect the queryer (the partitions 
+are taken care of by the database itself)
