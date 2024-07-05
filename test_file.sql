@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS event_log (
 -- Specifying schema during table creation (Great when dealing with multiple schemas)
 CREATE TABLE IF NOT EXISTS public.event_info (
     id INT PRIMARY KEY NOT NULL,
-    name VARCHAR(25)
+    name TEXT
 );
 
 -- Deleting the created table
