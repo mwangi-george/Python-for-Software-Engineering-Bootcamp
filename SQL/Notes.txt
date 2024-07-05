@@ -109,5 +109,12 @@ CREATE DATABASE dbname;
 DROP DATABASE dbname; # for deleting a database
 
 
--------------------------Creating Schemas / Tables---------------------------
+-------------------------Creating Schemas---------------------------
+
+We put tables inside schemas, by default, a public schema exists within a database
+We can always use the public schema, but we can create and delete new schemas as follows 
+
 CREATE SCHEMA schema_name;
+DROP SCHEMA schema_name; # for deleting Schemas
+
+It is alw
