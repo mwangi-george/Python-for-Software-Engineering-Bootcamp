@@ -1,4 +1,4 @@
-------------Partitions-------------------
+--------------------------------Partitions-------------------
 
 Partitions split a large table into smaller table splits by the 
 partition key/column eg date. This allows for more efficient storage
@@ -6,3 +6,10 @@ and faster querying when filtering by partition e.g all data since date X
 
 Good thing about partitions is that they dont affect the queryer (the partitions 
 are taken care of by the database itself)
+
+----------------------------------Indexing--------------------
+
+Indexing provide quicker access to data through hash maps. 
+Columns that are often used for filtering are usually indexed, 
+since it provides quicker access to identify groups of data without having
+to scan the whole table
