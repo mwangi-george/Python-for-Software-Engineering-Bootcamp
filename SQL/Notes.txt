@@ -50,3 +50,13 @@ and validation.
     -> text (variable)
     -> char(n), character(n)
     -> varchar(n), varying character(n)
+
+
+3 Datetime data types
+    -> timestamp
+        -> timestamptz
+    -> date 
+    -> time (w, w/o tz)
+    -> interval 
+
+
