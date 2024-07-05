@@ -34,3 +34,13 @@ multiple rows in that other table can corresponds to one row in the original tab
 
 They describe the type of data in each column. This provides consistency, performance, 
 and validation.
+
+1. Numerical data types 
+    - integer (4 bytes)
+        - smallint (2 bytes), bigint (8 bytes)
+    - numeric - (var)
+        - decimal
+    - real - (5 d.p)
+        - double precision (15 d.p)
+    - serial (auto incr.)
+        - smallserial, bigserial
