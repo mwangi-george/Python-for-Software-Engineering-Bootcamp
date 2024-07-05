@@ -66,3 +66,13 @@ and validation.
     -> bytea
     -> enumerated (custom -series of objects for ordering, eg in months)
     -> User defined
+
+
+5. Extensions 
+    -> JSON
+    -> XML
+    -> Array
+    -> Text Search
+    -> UUID
+    -> Geometric (eg. points, box)
+    -> Network (eg. inet, macaddr)
