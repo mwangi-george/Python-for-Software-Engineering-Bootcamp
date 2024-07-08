@@ -83,13 +83,47 @@ INSERT INTO student_attendance (week_day, student_id) VALUES ('Tuesday', 1);
 
 -- NB Use double quotation marks when specifying column names
 
+-- Creating tables from query results
+-- In this case all the data types are inherited from the results
+CREATE TABLE IF NOT EXISTS album_subset AS (SELECT *
+                                            FROM album
+                                            LIMIT 10);
 
+DROP TABLE album_subset;
 
+-- Aliasing columns
+SELECT invoice_id AS in_id,
+       customer_id AS cu_id
+from invoice
+LIMIT 20;
 
+-- Aliasing Tables
+SELECT inv.invoice_id  AS in_id,
+       inv.customer_id AS cu_id
+from invoice AS inv
+LIMIT 20;
 
+-- Ordering
+SELECT inv.invoice_id  AS in_id,
+       inv.customer_id AS cu_id
+FROM invoice AS inv
+ORDER BY cu_id DESC, in_id DESC
+LIMIT 20;
 
+-- Using column indexes for index
+SELECT inv.invoice_id  AS in_id,
+       inv.customer_id AS cu_id
+FROM invoice AS inv
+ORDER BY 2 DESC, 1 DESC
+LIMIT 20;
 
-
+-- Filtering Rows
+SELECT inv.invoice_id  AS in_id,
+       inv.customer_id AS cu_id
+FROM invoice AS inv
+WHERE inv.billing_city = 'Paris'
+ORDER BY cu_id DESC, in_id DESC
+LIMIT 20;
 
 
 
