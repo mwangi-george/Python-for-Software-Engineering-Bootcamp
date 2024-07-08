@@ -71,6 +71,13 @@ CREATE TABLE student_attendance (
 -- Inserting Data into tables
 INSERT INTO student_attendance VALUES (1, 'Monday');
 
+-- Multiple Rows
+INSERT INTO student_attendance
+VALUES (2, 'Monday'),
+       (3, 'Monday'),
+       (4, 'Monday'),
+       (5, 'Monday');
+
 -- Changing ordering of columns while inserting values
 INSERT INTO student_attendance (week_day, student_id) VALUES ('Tuesday', 1);
 
