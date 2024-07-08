@@ -27,3 +27,25 @@ except KeyError:
     print("We have encountered a key error")
 except ZeroDivisionError as z:
     print("We have encountered a zero division error", z)
+
+
+a = 1
+b = 0
+try:
+    c = a / b
+    print(c)
+except ZeroDivisionError:
+    c = a / 1  # fall back value
+    print(c)
+
+
+# TODO: Raising exceptions
+
+try:
+    if b == 0:
+        raise ZeroDivisionError
+    c = a / b
+except ZeroDivisionError:
+    print("Hey there! Try not dividing by 0")
+except NameError as n:
+    print("Are you using an undefined variable")
