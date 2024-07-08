@@ -58,6 +58,9 @@ CREATE TYPE day_of_week AS ENUM (
     'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
 );
 
+-- If we need to change the type
+-- ALTER TYPE day_of_week RENAME VALUE 'Sunday' TO 'new_value'
+
 -- We can now use the above enumerated type to create a table
 CREATE TABLE student_attendance (
     student_id INT,
