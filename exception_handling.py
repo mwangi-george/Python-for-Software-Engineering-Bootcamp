@@ -49,3 +49,16 @@ except ZeroDivisionError:
     print("Hey there! Try not dividing by 0")
 except NameError as n:
     print("Are you using an undefined variable")
+
+
+# Custom Exceptions
+class ThisIsOurCustomException(Exception):
+    pass
+
+
+try:
+    if b == 0:
+        raise ThisIsOurCustomException
+    c = a / b
+except ThisIsOurCustomException:
+    print("We have encountered our custom exception")
