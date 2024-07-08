@@ -19,3 +19,11 @@ try:
     print("This will not work", sample_dict["b"])
 except KeyError as k:
     print("We have encountered an error near", k)
+
+
+try:
+    2 / 0
+except KeyError:
+    print("We have encountered a key error")
+except ZeroDivisionError as z:
+    print("We have encountered a zero division error", z)
