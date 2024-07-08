@@ -50,3 +50,44 @@ ALTER TABLE user_info ADD COLUMN region VARCHAR(30);
 
 -- Say we realise our userbase is growing and we need to update id column of user_info table to bigint type
 ALTER TABLE user_info ALTER COLUMN id TYPE bigint;
+
+
+-- Enumerated Data types e.g. days of the week.
+-- Contain hierarchical ordering between different instances
+CREATE TYPE day_of_week AS ENUM (
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+);
+
+-- We can now use the above enumerated type to create a table
+CREATE TABLE student_attendance (
+    student_id INT,
+    week_day day_of_week,
+    key SERIAL PRIMARY KEY -- we don't need to provide a value while inserting values
+);
+
+-- Inserting Data into tables
+INSERT INTO student_attendance VALUES (1, 'Monday');
+
+-- Changing ordering of columns while inserting values
+INSERT INTO student_attendance (week_day, student_id) VALUES ('Tuesday', 1);
+
+-- NB Use double quotation marks when specifying column names
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
