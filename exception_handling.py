@@ -62,3 +62,5 @@ try:
     c = a / b
 except ThisIsOurCustomException:
     print("We have encountered our custom exception")
+finally:
+    print("We have reached the finally block")
