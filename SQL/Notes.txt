@@ -30,7 +30,7 @@ Multiple rows in one table can corresponds to one row in another table, and
 multiple rows in that other table can corresponds to one row in the original table
 
 
------------------------------Data Types-------------------------------
+-----------------------------Data Types------------------------------
 
 They describe the type of data in each column. This provides consistency, performance, 
 and validation.
